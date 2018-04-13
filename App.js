@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, StyleSheet, Text, View } from 'react-native';
+import { Button, Linking, StyleSheet, Text, View } from 'react-native';
 import Login from 'react-native-login';
 import Constants from 'expo';
 
@@ -21,10 +21,20 @@ export default class App extends React.Component {
     Login.tokens().then(tokens => this.setState({tokens})).catch(() => this.setState({tokens: null}));
   }
 
+  componentDidMount() {
+    Linking.addEventListener('url', this._handleOpenURL);
+  }
+
+  componentWillUnmount() {
+    Linking.removeEventListener('url', this._handleOpenURL);
+  }
+
+  _handleOpenURL(event) {
+    console.log(event.url);
+  }
+
   onLogin() {
-    console.log("Logging in");
     const config = Expo.Constants.manifest.extra.authConfig;
-    console.log("Config: "+config);
     Login.start(config).then(tokens => {
      this.setState({tokens: tokens});
     }).catch(() => this.setState({tokens: null}));
@@ -57,7 +67,7 @@ export default class App extends React.Component {
   renderLoginScreen() {
     return (
       <View style={styles.container}>
-        <Button title='Sign In With Facebook' button type='facebook' onPress={() => this.onLogin()} />
+        <Button title='Sign In With KeyCloak' button type='facebook' onPress={() => this.onLogin()} />
       </View>
     );
   }
