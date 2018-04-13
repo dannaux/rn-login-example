@@ -1,5 +1,7 @@
 Trying to use KeyCloack as a login server for a React Native app. 
 
+This code is based on [react-native-login](https://github.com/ak1394/react-native-login), but copied to the version I am working with. 
+
 ## Setup
 
 1. Connected android device (One Plus 3000, but that is irrelevant)
@@ -9,6 +11,9 @@ The intent was to show the app using Expo, but keycloak has to be configured wit
 
 ## Development setup
 
+(Personal use only. This is just as a help for when I pick up this code again, in a couple of days, weeks, months.)
+
+0. Code in /Work/Development/rn-login-example
 1. Keycloak in /Work/Development/keycloak-4.0.0.Beta1/, start with
     `./standalone.sh -Djboss.socket.binding.port-offset=100 -b=0.0.0.0` 
   * Offset for no particular reason, but this makes KeyCloak run on port 8180.
@@ -26,7 +31,22 @@ The intent was to show the app using Expo, but keycloak has to be configured wit
     * url: URL of your KeyCloak instance. 
     * realm: defined in KeyCloack. This is a like a namespace.
     * clientID: defined in KeyCloack. This is the identifier for applications using that namespace. Just one for now. Could be multiple later on.
-    * redirect_uri: this is where you go on succes. Should be a URI that your app picks up. Do this with Linking. **This URI must also be defined in KeyCloak.** If not it will not redirect. 
-    * appsite_uri: not tried yet. But from the code, these 
+    * redirect_uri: this is where you go on succes. Should be a URI that your app picks up. Do this with Linking. **This URI must also be defined in KeyCloak.** If not it will not redirect. Luckily it displays a clear message.  
+    * appsite_uri: not tried yet. But from the code, these look like the URIs that get the token sent with them. 
 
-3. 
+## Useful links
+
+### React native - Login - Keycloak
+* https://github.com/ak1394/react-native-login
+* https://github.com/ak1394/react-native-login-example
+* https://medium.com/@ak1394/simple-social-login-for-react-native-apps-71279bf80ffc
+* https://medium.com/@alexmngn/the-essential-boilerplate-to-authenticate-users-on-your-react-native-app-f7a8e0e04a42
+
+
+### Linking
+* https://medium.com/react-native-training/deep-linking-your-react-native-app-d87c39a1ad5e
+* https://facebook.github.io/react-native/docs/linking.html
+* https://www.oauth.com/oauth2-servers/redirect-uris/redirect-uris-native-apps/
+* https://developer.android.com/training/app-links/deep-linking.html#adding-filters
+
+### Native modules
