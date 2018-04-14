@@ -15,18 +15,19 @@ The intent was to show the app using Expo, but keycloak has to be configured wit
 
 0. Code in /Work/Development/rn-login-example
 1. Keycloak in /Work/Development/keycloak-4.0.0.Beta1/, start with
-    `./standalone.sh -Djboss.socket.binding.port-offset=100 -b=0.0.0.0` 
+>    ./standalone.sh -Djboss.socket.binding.port-offset=100 -b=0.0.0.0 
+
   * Offset for no particular reason, but this makes KeyCloak run on port 8180.
   * Second parameter is required to be able to access Keycloack on the local network from Expo.  Otherwise it is only accessible from localhost.  
 
 2. KeyCloak configuration in the app (development.config.js):
-    authConfig : {
-        url: 'http://192.168.0.99:8180/auth',
-        realm: 'rn-login',
-        client_id: 'rn-login-app',
-        redirect_uri: 'meerdaal://login',
-        appsite_uri: 'http://192.168.0.99:9000/dev/vttl/app',
-    }
+ >   authConfig : {
+ >       url: 'http://192.168.0.99:8180/auth',
+ >       realm: 'rn-login',
+ >       client_id: 'rn-login-app',
+ >       redirect_uri: 'meerdaal://login',
+ >       appsite_uri: 'http://192.168.0.99:9000/dev/vttl/app',
+ >   }
  
     * url: URL of your KeyCloak instance. 
     * realm: defined in KeyCloack. This is a like a namespace.
@@ -50,3 +51,25 @@ The intent was to show the app using Expo, but keycloak has to be configured wit
 * https://developer.android.com/training/app-links/deep-linking.html#adding-filters
 
 ### Native modules
+
+* create a project with native code running `react-native init projectname` 
+* when you have done this, instructions on how to run are displayed:
+> To run your app on iOS:
+>
+>  cd /home/philip/Work/Development/rn-test2/testnative2
+>
+>  react-native run-ios
+>
+>   or
+>
+>   Open ios/testnative2.xcodeproj in Xcode
+>
+>   Hit the Run button
+>
+>To run your app on Android:
+>
+>   cd /home/philip/Work/Development/rn-test2/testnative2
+>
+>   Have an Android emulator running (quickest way to get started), or a device connected
+>
+>   react-native run-android
