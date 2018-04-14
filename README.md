@@ -72,4 +72,6 @@ The intent was to show the app using Expo, but keycloak has to be configured wit
 >
 >   Have an Android emulator running (quickest way to get started), or a device connected
 >
->   react-native run-android
+>   react-native run-androido
+* [Ejecting](https://github.com/react-community/create-react-native-app/blob/master/EJECTING.md)
+* [Creating rn apps](https://github.com/react-community/create-react-native-app/blob/master/react-native-scripts/template/README.md)
